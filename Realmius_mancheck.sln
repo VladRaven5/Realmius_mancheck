@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck.UWP", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck.iOS", "Realmius_mancheck\Realmius_mancheck.iOS\Realmius_mancheck.iOS.csproj", "{1972BC0A-1D54-4662-85DE-D642AE375C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck_Web", "..\Realmius_mancheck_Web\Realmius_mancheck_Web\Realmius_mancheck_Web.csproj", "{0C65DB08-3188-428F-9ED8-6599856DE402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck_Web", "Realmius_mancheck_Web\Realmius_mancheck_Web\Realmius_mancheck_Web.csproj", "{0C65DB08-3188-428F-9ED8-6599856DE402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -278,6 +278,7 @@ Global
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.AppStore|x86.ActiveCfg = Release|Any CPU
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.AppStore|x86.Build.0 = Release|Any CPU
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C65DB08-3188-428F-9ED8-6599856DE402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.Debug|ARM.Build.0 = Debug|Any CPU
 		{0C65DB08-3188-428F-9ED8-6599856DE402}.Debug|iPhone.ActiveCfg = Debug|Any CPU
