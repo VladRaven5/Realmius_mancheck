@@ -10,7 +10,7 @@ namespace Realmius_mancheck.Model
     {
         public string Name { get; }
 
-        public readonly string Password;// { get; set; }
+        public readonly string Password;
 
         public User()
         {

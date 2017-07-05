@@ -34,15 +34,5 @@ namespace Realmius_mancheck_Web.Models
 
             return null;
         }
-
-        //public static KeyValuePair<string, string> GetUser(int number)
-        //{
-        //    if (number < _usersCredentials.Count)
-        //    {
-        //        return _usersCredentials.ToList()[number];
-        //    }
-
-        //    return new KeyValuePair<string, string>("error", "error");
-        //}
     }
 }

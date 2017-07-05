@@ -74,15 +74,6 @@ namespace Realmius_mancheck
             {
                 InitAuthorisation();
             }
-            
-            //var authorisationPage = new AuthorisationPage() {BindingContext = tabbedPageViewModel};
-
-            //tabbedPageViewModel.OnAuthorisePageClosed += (o, e) => 
-            //{
-            //    authorisationPage.Navigation.PopModalAsync();
-            //    SetRealmConnection();
-            //};
-            //MainPage.Navigation.PushModalAsync(authorisationPage);
         }
 
         private void SetRealmConnection()
@@ -103,16 +94,13 @@ namespace Realmius_mancheck
         {
             try
             {
-                //syncService.DataDownloaded -= App.Instance._syncService_DataDownloaded;
                 syncService.Dispose();
                 syncService.DeleteDatabase();
             }
             catch (Exception e)
             {
             }
-            
-            //ResetDatabasePaths();
-            //InitializeDatabasePaths();
+
             ResetDatabasePaths();
             InitializeDatabasePaths();
             SetRealmConnection();
@@ -128,16 +116,14 @@ namespace Realmius_mancheck
                 ResetDatabasePaths();
             }
             RealmiusSyncService.RealmiusDbPath = realmPath + "_sync";
-            //RealmSyncService.RealmSyncDbPath = realmPath + "_sync";
         }
+
         public static void ResetDatabasePaths()
         {
             realmPath = Guid.NewGuid().ToString();
         }
 
         #region ---USER PROCCESSING---
-
-        //private AuthorisationPage authorisationPage;
 
         public void InitAuthorisation()
         {
@@ -148,29 +134,15 @@ namespace Realmius_mancheck
             
             authorisationPageViewModel.OnAuthorisePageClosed += (o, e) =>
             {
-            //    //authorisationPage.Navigation.PopModalAsync();
                 authorisationPage.Navigation.PopModalAsync();
-                
-            //    //authorisationPage.Navigation.PopModalAsync();
-
                 ReinitializeDatabases();
                 SaveUserCredentials();
-                //SetRealmConnection();
-                //RefreshViews?.Invoke(new object(), EventArgs.Empty);
             };
 
             MainPage.Navigation.PushModalAsync(authorisationPage);
         }
 
         public EventHandler RefreshViews;
-
-        //private void OnAuthCompleted(object o, EventArgs e)
-        //{
-        //    authorisationPage.Navigation.PopModalAsync();
-        //    //MainPage.Navigation.PopToRootAsync();
-        //    SaveUserCredentials();
-        //    SetRealmConnection();
-        //}
 
         private void GetUserCredentials()
         {
@@ -225,7 +197,6 @@ namespace Realmius_mancheck
                     {
                         properties.Remove(prop.Name);
                     }
-                    //OnPropertyChanged(nameof(User) + "." + prop.Name);
                 }
             }
             Application.Current.SavePropertiesAsync();

@@ -11,15 +11,13 @@ using Realmius_mancheck_Web.Models;
 
 namespace Realmius_mancheck_Web
 {
-    public class RealmiusServerAuthConfiguration : RealmiusConfigurationBase<User>// IRealmiusServerConfiguration<TUser> where TUser : IUser
+    public class RealmiusServerAuthConfiguration : RealmiusConfigurationBase<User>
     {
         public RealmiusServerAuthConfiguration() : base(() => new RealmiusServerContext())
         {
         }
 
         public IList<Type> TypesToSyncList { get; set; }
-
-        //public override IList<Type> TypesToSync => TypesToSyncList;
 
         public override IList<Type> TypesToSync { get { return new List<Type>() {typeof(NoteRealm), typeof(PhotoRealm)};} }
 
@@ -92,6 +90,15 @@ namespace Realmius_mancheck_Web
             return null;
             //return new List<string>() { "all" };
         }
+
+#region - USER'S CREDS -
+
+        private static string adminRole = "admin";
+        private static string devRole = "dev";
+        private static string userRole = "user";
+        private static string unknwnRole = "";
+        private static string forAll = "all";
+
         //какие роли юзеров имеют доступ к объектам, выложенным юзерами с ролями, равными ключу 
         private Dictionary<string, List<string>> ObjectsTagsHierarchy = new Dictionary<string, List<string>>()
         {
@@ -120,11 +127,6 @@ namespace Realmius_mancheck_Web
             { adminRole, new List<string>() { unknwnRole, userRole, devRole, adminRole, forAll } }
         };
 
-
-        private static string adminRole = "admin";
-        private static string devRole = "dev";
-        private static string userRole = "user";
-        private static string unknwnRole = "";
-        private static string forAll = "all";
+#endregion // - USER'S CREDS -
     }
 }

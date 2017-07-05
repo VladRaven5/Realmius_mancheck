@@ -25,7 +25,6 @@ namespace Realmius_mancheck.ViewModel
 
         public string UserPassword { get; set; }
 
-        //public User CurrentUser { get; set; }
         public User CurrentUser
         {
             get { return App.CurrenUser; }
@@ -56,8 +55,6 @@ namespace Realmius_mancheck.ViewModel
                 ErrorMsg = null;
                 CurrentUser = new User(UserName, UserPassword);
                 OnPropertyChanged(nameof(CurrentUser));
-                //UserAuthorised = true;
-                //OnPropertyChanged(nameof(UserAuthorised));
                 UserAuthorised = true;
                 OnPropertyChanged(nameof(UserAuthorised));
                 GrantAccess();
@@ -74,9 +71,6 @@ namespace Realmius_mancheck.ViewModel
             var testUser = UsersCredentialsDict.GetUser(0);
             CurrentUser = new User(testUser.Key, testUser.Value);
             OnPropertyChanged(nameof(CurrentUser));
-
-            //UserAuthorised = true;
-            //OnPropertyChanged(nameof(UserAuthorised));
             GrantAccess();
         }
 

@@ -36,7 +36,8 @@ namespace Realmius_mancheck_Web
                     {
                         TypesToSyncList = new List<Type>()
                         {
-                            typeof(NoteRealm), typeof(PhotoRealm)
+                            typeof(NoteRealm),
+                            typeof(PhotoRealm)
                         }
                     });
             }

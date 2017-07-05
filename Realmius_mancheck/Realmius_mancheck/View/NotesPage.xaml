@@ -19,15 +19,18 @@
                     <ColumnDefinition Width="2.5*"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
+                
                 <Entry Text="{Binding NewNoteTitle}"
                        Placeholder="Title"
                        PlaceholderColor="DarkGray"
                        HorizontalOptions="Fill"/>
+                
                 <Entry Text="{Binding NewNoteDescription}"
                        Placeholder="Description"
                        PlaceholderColor="DarkGray"
                        HorizontalOptions="Fill"
                        Grid.Column="1"/>
+                
                 <Button Text="Add" 
                         FontSize="10"
                         Grid.Column="2"
@@ -48,11 +51,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="50"/>
                                 </Grid.ColumnDefinitions>
-                                <!--<Label Text="{Binding Id}"/>-->
+                                
                                 <Label Text="{Binding Title}" FontAttributes="Bold" Grid.Column="1"/>
+                                
                                 <Label Text="{Binding Description}" Grid.Column="2"/>
+                                
                                 <Label Text="{Binding PostTime, StringFormat='{0:HH:mm:ss}'}" Grid.Column="3"/>
-                                <Button Text="Del" FontSize="10" VerticalOptions="Center" Command="{Binding BindingContext.RemoveNoteCommand, Source={x:Reference notesPage}}" CommandParameter="{Binding Id}" Grid.Column="4"/>
+                                
+                                <Button Text="Del" 
+                                        FontSize="10" 
+                                        VerticalOptions="Center" 
+                                        Command="{Binding BindingContext.RemoveNoteCommand, Source={x:Reference notesPage}}" 
+                                        CommandParameter="{Binding Id}" Grid.Column="4"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

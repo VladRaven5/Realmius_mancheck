@@ -5,7 +5,6 @@
             xmlns:local="clr-namespace:Realmius_mancheck;assembly=Realmius_mancheck"
             x:Name="mainTabbedPage">
   <!--Pages can be added as references or inline-->
-    <!--<local:AuthorisationPage BindingContext="{Binding BindingContext, Source={x:Reference Name=mainTabbedPage}}"/>-->
     <local:NotesPage BindingContext="{Binding NotesPageViewModel}"/>
     <local:PhotosPage BindingContext="{Binding PhotosPageViewModel}"/>
     <local:SettingsPage BindingContext="{Binding SettingsPageViewModel}"/>

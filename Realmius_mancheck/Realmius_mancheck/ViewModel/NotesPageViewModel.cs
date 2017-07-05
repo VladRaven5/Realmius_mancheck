@@ -40,7 +40,7 @@ namespace Realmius_mancheck.ViewModel
 
         private void InitData()
         {
-            var realmNotes = /*Realm.GetInstance()*/App.GetRealm().All<NoteRealm>();
+            var realmNotes = App.GetRealm().All<NoteRealm>();
             realmNotes.SubscribeForNotifications((collection, o, e) =>
             {
             });
@@ -52,7 +52,6 @@ namespace Realmius_mancheck.ViewModel
             string title = !String.IsNullOrWhiteSpace(NewNoteTitle) ? NewNoteTitle : "<none>";
             string description = !String.IsNullOrWhiteSpace(NewNoteDescription) ? NewNoteDescription : "<none>";
 
-            //var realm = Realm.GetInstance();
             var realm = App.GetRealm();
             realm.Write(() =>
             {
@@ -60,32 +59,22 @@ namespace Realmius_mancheck.ViewModel
                 {
                     Title = title,
                     Description = description,
-                    Id = Guid.NewGuid().ToString(),//Notes?.LastOrDefault()?.Id + 1 ?? 0,
+                    Id = Guid.NewGuid().ToString(),
                     PostTime = DateTimeOffset.Now
                 });
             });
-            //Notes = Realm.GetInstance().All<NoteRealm>().ToList();
-
-            //Notes.Add(new NoteRealm()
-            //{
-            //    Title = title,
-            //    Description = description,
-            //    Id = Notes?.Last()?.Id + 1 ?? 0 
-            //});
+            
             NewNoteDescription = "";
             NewNoteTitle = "";
             OnPropertyChanged(nameof(NewNoteTitle));
             OnPropertyChanged(nameof(NewNoteDescription));
         }
 
-        private void RemoveNote(/*int */string id)
+        private void RemoveNote(string id)
         {
-            //Notes.Remove(Notes.First(x => x.Id == id));
-            //var realm = Realm.GetInstance();
             var realm = App.GetRealm();
             realm.Write(() =>
                 {
-                    //realm.Remove(Notes.First(x => x.Id == id));
                     realm.RemoveAndSync(Notes.First(x => x.Id == id));
                 }
             );

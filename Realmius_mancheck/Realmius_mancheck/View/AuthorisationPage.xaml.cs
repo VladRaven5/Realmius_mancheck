@@ -16,13 +16,5 @@ namespace Realmius_mancheck
         {
             InitializeComponent();
         }
-
-        protected override void OnDisappearing()
-        {
-            //var bindingContext = ((TabbedPageViewModel)BindingContext);
-            //if (!bindingContext.UserAuthorised)
-            //    bindingContext.Skip();
-            base.OnDisappearing();
-        }
     }
 }

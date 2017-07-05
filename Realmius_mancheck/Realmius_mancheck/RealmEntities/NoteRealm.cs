@@ -11,7 +11,7 @@ namespace Realmius_mancheck.RealmEntities
 {
     public class NoteRealm : RealmObject, IRealmiusObjectClient
     {
-        public string MobilePrimaryKey => Id.ToString();
+        public string MobilePrimaryKey => Id;
 
         public string Description { get; set; }
 

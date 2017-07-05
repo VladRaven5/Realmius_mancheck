@@ -18,13 +18,7 @@
                                FlowColumnMinWidth="150">
             <controls:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <Grid Padding="2"><!--Source="{Binding PhotoUri, Converter={StaticResource StringToUriConverter}}"-->
-                        <!--<Image  HeightRequest="150">
-                            <Image.Source>
-                                <UriImageSource Uri="{Binding PhotoUri, Converter={StaticResource StringToUriConverter}}" CachingEnabled="True"/>
-                            </Image.Source>
-                        </Image>-->
-                        
+                    <Grid Padding="2">
                         <forms:CachedImage HeightRequest="150"
                                            Aspect="AspectFill"
                                            DownsampleToViewSize="True">

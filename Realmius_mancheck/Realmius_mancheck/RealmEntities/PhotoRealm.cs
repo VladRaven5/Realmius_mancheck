@@ -13,7 +13,7 @@ namespace Realmius_mancheck.RealmEntities
     {
         public string PhotoUri { get; set; }
 
-        public string MobilePrimaryKey => Id.ToString();
+        public string MobilePrimaryKey => Id;
 
         [PrimaryKey]
         public string Id { get; set; }
