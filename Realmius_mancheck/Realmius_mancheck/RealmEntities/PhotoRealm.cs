@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Realmius.SyncService;
-using Realmius_mancheck.Interfaces;
 using Realms;
 
 namespace Realmius_mancheck.RealmEntities
