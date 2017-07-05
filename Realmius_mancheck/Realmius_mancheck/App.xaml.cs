@@ -30,6 +30,8 @@ namespace Realmius_mancheck
 
         private readonly string hostUrl = "http://192.168.10.109:9930";
 
+        private Type[] TypesToSync = new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
+
         private static RealmConfiguration RealmConfiguration
         {
             get
@@ -40,7 +42,7 @@ namespace Realmius_mancheck
                     {
                     },
                     ShouldDeleteIfMigrationNeeded = false,
-                    SchemaVersion = 1,
+                    SchemaVersion = 2,
                 };
                 return config;
             }
@@ -81,13 +83,9 @@ namespace Realmius_mancheck
             syncService = SyncServiceFactory.CreateUsingSignalR(
                 GetRealm,
                 new Uri(hostUrl + "/Realmius" + (needAuthorisation? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
-                new[]
-                {
-                    typeof(NoteRealm),
-                    typeof(PhotoRealm)
-                });
+                TypesToSync);
 
-            //InitRealmData();
+            InitRealmData();
         }
 
         public void ReinitializeDatabases()
@@ -123,7 +121,7 @@ namespace Realmius_mancheck
             realmPath = Guid.NewGuid().ToString();
         }
 
-        #region ---USER PROCCESSING---
+        #region - USER PROCCESSING -
 
         public void InitAuthorisation()
         {
@@ -143,7 +141,7 @@ namespace Realmius_mancheck
         }
 
         public EventHandler RefreshViews;
-
+        //TODO: не сохраняются введенные данные
         private void GetUserCredentials()
         {
             IDictionary<string, object> properties = Application.Current.Properties;
@@ -237,11 +235,38 @@ namespace Realmius_mancheck
                     PhotoUri = "https://i.ytimg.com/vi/_rLTPRGpA60/maxresdefault.jpg",
                     PostTime = DateTimeOffset.Now
                 });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "odmen",
+                    Id = Guid.NewGuid().ToString(),
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "Hi all!"
+                });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "vlad",
+                    Id = Guid.NewGuid().ToString(),
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 1,
+                    Text = "Hi!"
+                });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "homer",
+                    Id = Guid.NewGuid().ToString(),
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "What's up>"
+                });
             });
         }
- #endregion
+ #endregion // - USER PROCESSING -
         
-        #region ---LIFECYCLE---
+        #region - LIFECYCLE -
 
         protected override void OnStart()
         {
@@ -257,6 +282,6 @@ namespace Realmius_mancheck
         {
             // Handle when your app resumes
         }
-#endregion
+        #endregion //- LIFECYCLE -
     }
 }

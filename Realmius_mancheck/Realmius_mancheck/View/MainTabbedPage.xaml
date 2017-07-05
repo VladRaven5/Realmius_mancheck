@@ -7,5 +7,6 @@
   <!--Pages can be added as references or inline-->
     <local:NotesPage BindingContext="{Binding NotesPageViewModel}"/>
     <local:PhotosPage BindingContext="{Binding PhotosPageViewModel}"/>
+    <local:ChatPage BindingContext="{Binding ChatPageViewModel}"/>
     <local:SettingsPage BindingContext="{Binding SettingsPageViewModel}"/>
 </TabbedPage>

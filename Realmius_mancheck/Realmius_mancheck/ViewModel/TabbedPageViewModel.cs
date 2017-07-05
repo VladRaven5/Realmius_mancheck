@@ -17,11 +17,14 @@ namespace Realmius_mancheck.ViewModel
 
         public SettingsPageViewModel SettingsPageViewModel { get; } = new SettingsPageViewModel();
 
+        public ChatPageViewModel ChatPageViewModel { get; } = new ChatPageViewModel();
+
         public void RefreshViewModels()
         {
             NotesPageViewModel.Refresh();
             PhotosPageViewModel.Refresh();
             SettingsPageViewModel.Refresh();
+            ChatPageViewModel.Refresh();
         }
     }
 }
