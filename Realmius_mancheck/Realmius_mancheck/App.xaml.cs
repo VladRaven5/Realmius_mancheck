@@ -32,27 +32,7 @@ namespace Realmius_mancheck
 
         private Type[] TypesToSync = new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
 
-        private static RealmConfiguration RealmConfiguration
-        {
-            get
-            {
-                var config = new RealmConfiguration(realmPath)
-                {
-                    MigrationCallback = (s, e) =>
-                    {
-                    },
-                    ShouldDeleteIfMigrationNeeded = false,
-                    SchemaVersion = 2,
-                };
-                return config;
-            }
-        }
-
-        public static Realm GetRealm()
-        {
-            var instance = Realm.GetInstance(RealmConfiguration);
-            return instance;
-        }
+ 
 
         public App()
         {
@@ -76,16 +56,47 @@ namespace Realmius_mancheck
             {
                 InitAuthorisation();
             }
+            else
+            {
+                realmPath = CurrenUser.Name;
+                InitializeDatabasePaths();
+                SetRealmConnection();
+                RefreshViews?.Invoke(new object(), EventArgs.Empty);
+            }
         }
 
+
+        #region - Realm services -
+
+        private static RealmConfiguration RealmConfiguration
+        {
+            get
+            {
+                var config = new RealmConfiguration(realmPath)
+                {
+                    MigrationCallback = (s, e) =>
+                    {
+                    },
+                    ShouldDeleteIfMigrationNeeded = false,
+                    SchemaVersion = 2,
+                };
+                return config;
+            }
+        }
+
+        public static Realm GetRealm()
+        {
+            var instance = Realm.GetInstance(RealmConfiguration);
+            return instance;
+        }
         private void SetRealmConnection()
         {
             syncService = SyncServiceFactory.CreateUsingSignalR(
                 GetRealm,
-                new Uri(hostUrl + "/Realmius" + (needAuthorisation? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
+                new Uri(hostUrl + "/Realmius" + (needAuthorisation ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
                 TypesToSync);
 
-            InitRealmData();
+            //InitRealmData();
         }
 
         public void ReinitializeDatabases()
@@ -118,8 +129,83 @@ namespace Realmius_mancheck
 
         public static void ResetDatabasePaths()
         {
-            realmPath = Guid.NewGuid().ToString();
+            if (CurrenUser == null)
+            {
+                realmPath = Guid.NewGuid().ToString();
+            }
+            else
+            {
+                realmPath = CurrenUser.Name;
+            }
+            
         }
+
+        private void InitRealmData()
+        {
+            //var realm = Realm.GetInstance();
+            var realm = App.GetRealm();
+            realm.Write(() =>
+            {
+                realm.Add(new NoteRealm() { Id = "1001", Title = "Film", Description = "Fight club", PostTime = DateTimeOffset.Now });
+
+                realm.Add(new NoteRealm() { Id = "1002", Title = "Cleaning", Description = "Clean the room", PostTime = DateTimeOffset.Now });
+
+                realm.Add(new NoteRealm() { Id = "1003", Title = "Pet", Description = "Feed the dog", PostTime = DateTimeOffset.Now });
+
+                realm.Add(new PhotoRealm()
+                {
+                    Id = "1004",
+                    Title = "Bike",
+                    PhotoUri = "https://auto.ndtvimg.com/bike-images/gallery/honda/cbr-150r/exterior/bike-img.png",
+                    PostTime = DateTimeOffset.Now
+                });
+
+                realm.Add(new PhotoRealm()
+                {
+                    Id = "1005",
+                    Title = "Plain",
+                    PhotoUri = "http://az616578.vo.msecnd.net/files/2016/06/11/636012615152249351-1424983048_cover4.jpg",
+                    PostTime = DateTimeOffset.Now
+                });
+
+                realm.Add(new PhotoRealm()
+                {
+                    Id = "1006",
+                    Title = "Helicopter",
+                    PhotoUri = "https://i.ytimg.com/vi/_rLTPRGpA60/maxresdefault.jpg",
+                    PostTime = DateTimeOffset.Now
+                });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "odmen",
+                    Id = "10000",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "Hi all!"
+                });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "vlad",
+                    Id = "10001",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 1,
+                    Text = "Hi!"
+                });
+
+                realm.Add(new ChatMessageRealm()
+                {
+                    AuthorName = "homer",
+                    Id = "10002",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "What's up>"
+                });
+            });
+        }
+
+        #endregion // - Realm services -
 
         #region - USER PROCCESSING -
 
@@ -200,70 +286,6 @@ namespace Realmius_mancheck
             Application.Current.SavePropertiesAsync();
         }
 
-        private void InitRealmData()
-        {
-            //var realm = Realm.GetInstance();
-            var realm = App.GetRealm();
-            realm.Write(() =>
-            {
-                realm.Add(new NoteRealm() { Id = "1001", Title = "Film", Description = "Fight club", PostTime = DateTimeOffset.Now });
-                
-                realm.Add(new NoteRealm() {Id = "1002", Title = "Cleaning", Description = "Clean the room", PostTime = DateTimeOffset.Now });
-
-                realm.Add(new NoteRealm() {Id = "1003", Title = "Pet", Description = "Feed the dog", PostTime = DateTimeOffset.Now});
-
-                realm.Add(new PhotoRealm()
-                {
-                    Id = "1004",
-                    Title = "Bike",
-                    PhotoUri = "https://auto.ndtvimg.com/bike-images/gallery/honda/cbr-150r/exterior/bike-img.png",
-                    PostTime = DateTimeOffset.Now
-                });
-
-                realm.Add(new PhotoRealm()
-                {
-                    Id = "1005",
-                    Title = "Plain",
-                    PhotoUri = "http://az616578.vo.msecnd.net/files/2016/06/11/636012615152249351-1424983048_cover4.jpg",
-                    PostTime = DateTimeOffset.Now
-                });
-
-                realm.Add(new PhotoRealm()
-                {
-                    Id = "1006",
-                    Title = "Helicopter",
-                    PhotoUri = "https://i.ytimg.com/vi/_rLTPRGpA60/maxresdefault.jpg",
-                    PostTime = DateTimeOffset.Now
-                });
-
-                realm.Add(new ChatMessageRealm()
-                {
-                    AuthorName = "odmen",
-                    Id = Guid.NewGuid().ToString(),
-                    CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
-                    Text = "Hi all!"
-                });
-
-                realm.Add(new ChatMessageRealm()
-                {
-                    AuthorName = "vlad",
-                    Id = Guid.NewGuid().ToString(),
-                    CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 1,
-                    Text = "Hi!"
-                });
-
-                realm.Add(new ChatMessageRealm()
-                {
-                    AuthorName = "homer",
-                    Id = Guid.NewGuid().ToString(),
-                    CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
-                    Text = "What's up>"
-                });
-            });
-        }
  #endregion // - USER PROCESSING -
         
         #region - LIFECYCLE -
