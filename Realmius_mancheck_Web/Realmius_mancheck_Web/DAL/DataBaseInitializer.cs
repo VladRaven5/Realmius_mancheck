@@ -7,7 +7,7 @@ using Realmius_mancheck_Web.Models;
 
 namespace Realmius_mancheck_Web.DAL
 {
-    public class DataBaseInitializer :System.Data.Entity.DropCreateDatabaseAlways<RealmiusServerContext>
+    public class DataBaseInitializer :System.Data.Entity.DropCreateDatabaseIfModelChanges<RealmiusServerContext>
     {
         protected override void Seed(RealmiusServerContext context)
         {

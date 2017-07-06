@@ -180,6 +180,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChatMessageRealmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
@@ -189,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Models\ChatMessageRealm.cs" />
     <Compile Include="Models\NoteRealm.cs" />
     <Compile Include="Models\PhotoRealm.cs" />
     <Compile Include="Models\User.cs" />
@@ -252,6 +254,11 @@
     <Content Include="Views\Photos\Details.cshtml" />
     <Content Include="Views\Photos\Edit.cshtml" />
     <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\ChatMessageRealms\Create.cshtml" />
+    <Content Include="Views\ChatMessageRealms\Delete.cshtml" />
+    <Content Include="Views\ChatMessageRealms\Details.cshtml" />
+    <Content Include="Views\ChatMessageRealms\Edit.cshtml" />
+    <Content Include="Views\ChatMessageRealms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

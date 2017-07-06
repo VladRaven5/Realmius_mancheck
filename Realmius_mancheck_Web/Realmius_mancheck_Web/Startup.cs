@@ -17,6 +17,8 @@ namespace Realmius_mancheck_Web
     {
         private readonly bool needAuthorisation = true;
 
+        public static Type[] TypesForSync => new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
+
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
@@ -34,11 +36,11 @@ namespace Realmius_mancheck_Web
                     app,
                     new RealmiusServerAuthConfiguration()
                     {
-                        TypesToSyncList = new List<Type>()
+                        TypesToSyncList = TypesForSync /*new List<Type>()
                         {
                             typeof(NoteRealm),
                             typeof(PhotoRealm)
-                        }
+                        }*/
                     });
             }
             else
@@ -47,11 +49,12 @@ namespace Realmius_mancheck_Web
                 "/Realmius",
                 app,
                 () => new RealmiusServerContext(),
-                new[]
+                TypesForSync
+                /*new[]
                 {
                     typeof(NoteRealm),
                     typeof(PhotoRealm)
-                });
+                }*/);
             }
         }
     }

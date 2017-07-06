@@ -19,7 +19,7 @@ namespace Realmius_mancheck_Web
 
         public IList<Type> TypesToSyncList { get; set; }
 
-        public override IList<Type> TypesToSync { get { return new List<Type>() {typeof(NoteRealm), typeof(PhotoRealm)};} }
+        public override IList<Type> TypesToSync => Startup.TypesForSync; // { get { return new List<Type>() {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};} }
 
         public override User AuthenticateUser(IRequest request)
         {
@@ -42,6 +42,11 @@ namespace Realmius_mancheck_Web
             if (args.Entity is PhotoRealm)
             {
                 var newPhoto = args.Entity as PhotoRealm;
+                return true;
+            }
+            if (args.Entity is ChatMessageRealm)
+            {
+                var newMessage = args.Entity as ChatMessageRealm;
                 return true;
             }
             return false;
@@ -67,6 +72,11 @@ namespace Realmius_mancheck_Web
             if (obj is PhotoRealm)
             {
                 var currentObject = obj as PhotoRealm;
+                return new List<string>() { "all" };
+            }
+
+            if (obj is ChatMessageRealm)
+            {
                 return new List<string>() { "all" };
             }
 

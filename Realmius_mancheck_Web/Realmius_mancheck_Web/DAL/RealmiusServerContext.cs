@@ -20,6 +20,8 @@ namespace Realmius_mancheck_Web.DAL
 
         public DbSet<PhotoRealm> Photos { get; set; }
 
+        public DbSet<ChatMessageRealm> ChatMessages { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
