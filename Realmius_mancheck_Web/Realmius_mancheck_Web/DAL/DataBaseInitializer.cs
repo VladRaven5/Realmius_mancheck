@@ -7,7 +7,9 @@ using Realmius_mancheck_Web.Models;
 
 namespace Realmius_mancheck_Web.DAL
 {
-    public class DataBaseInitializer :System.Data.Entity.DropCreateDatabaseIfModelChanges<RealmiusServerContext>
+    public class DataBaseInitializer :
+        //System.Data.Entity.DropCreateDatabaseAlways<RealmiusServerContext>
+        System.Data.Entity.DropCreateDatabaseIfModelChanges<RealmiusServerContext>
     {
         protected override void Seed(RealmiusServerContext context)
         {
@@ -71,6 +73,37 @@ namespace Realmius_mancheck_Web.DAL
                 }
             };
             context.Photos.AddRange(photos);
+
+            var messages = new List<ChatMessageRealm>()
+            {
+                new ChatMessageRealm()
+                {
+                    AuthorName = "odmen",
+                    Id = "10003",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "Hi all. Im admin from server!"
+                },
+
+                new ChatMessageRealm()
+                {
+                    AuthorName = "vlad",
+                    Id = "10004",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 1,
+                    Text = "Hi! Im vlad frm server"
+                },
+
+                new ChatMessageRealm()
+                {
+                    AuthorName = "homer",
+                    Id = "10005",
+                    CreatingDateTime = DateTimeOffset.Now,
+                    MessageStatusCode = 2,
+                    Text = "What's up? Im homer frm server"
+                }
+            };
+            context.ChatMessages.AddRange(messages);
             context.SaveChanges();
         }
     }

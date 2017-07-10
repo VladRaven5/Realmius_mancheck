@@ -22,7 +22,8 @@ namespace Realmius_mancheck.RealmEntities
 
         public int MessageStatusCode { get; set; }
 
-        public MessageStatus MessageStatus => (MessageStatus) MessageStatusCode;
+        [Ignored]
+        public MessageStatus MessageStatus => (MessageStatus)MessageStatusCode;
 
         public ChatMessageRealm(string text)
         {

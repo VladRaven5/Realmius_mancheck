@@ -123,7 +123,7 @@ namespace Realmius_mancheck_Web
             { adminRole, new List<string>() { adminRole } }
         };
 
-        //к какому контенту имею доступ юзеры определенных ролей(ключи)
+        //к какому контенту имеют доступ юзеры определенных ролей(ключи)
         private Dictionary<string, List<string>> UsersTagsHierarchy = new Dictionary<string, List<string>>()
         {
             { unknwnRole, new List<string>() {unknwnRole, forAll}},
