@@ -36,7 +36,7 @@ namespace Realmius_mancheck.ViewModel
         {
             var realmMessages = App.GetRealm().All<ChatMessageRealm>();
             SourceMessages = realmMessages.AsRealmCollection();
-            
+
             realmMessages.SubscribeForNotifications((o, y, e) =>
             {
                 //TODO: добавлять сверху новые сообщения
@@ -49,7 +49,7 @@ namespace Realmius_mancheck.ViewModel
         {
             if (String.IsNullOrWhiteSpace(NewMessageText))
                 return;
-            
+
             var newMessage = new ChatMessageRealm(NewMessageText);
 
             var realm = App.GetRealm();

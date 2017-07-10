@@ -21,18 +21,17 @@ namespace Realmius_mancheck
         public static User CurrenUser { get; set; }
 
         public static bool UserAuthorised { get; set; }
+        
+        public static App Instance { get; set; }
 
         private readonly bool needAuthorisation = true;
 
         private static IRealmiusSyncService syncService;
 
-        public static App Instance { get; set; }
-
         private readonly string hostUrl = "http://192.168.10.109:9930";
 
         private Type[] TypesToSync = new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
-
- 
+        
 
         public App()
         {
@@ -66,7 +65,7 @@ namespace Realmius_mancheck
         }
 
 
-        #region - Realm services -
+        #region - REALM SERVICES -
 
         private static RealmConfiguration RealmConfiguration
         {
@@ -78,7 +77,7 @@ namespace Realmius_mancheck
                     {
                     },
                     ShouldDeleteIfMigrationNeeded = false,
-                    SchemaVersion = 2,
+                    SchemaVersion = 3,
                 };
                 return config;
             }
@@ -96,7 +95,11 @@ namespace Realmius_mancheck
                 new Uri(hostUrl + "/Realmius" + (needAuthorisation ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
                 TypesToSync);
 
-            //InitRealmData();
+            if (!GetRealm().All<NoteRealm>().Any() &&  !GetRealm().All<PhotoRealm>().Any() && !GetRealm().All<ChatMessageRealm>().Any())
+            {
+                InitRealmData();
+            }
+            
         }
 
         public void ReinitializeDatabases()
@@ -104,7 +107,7 @@ namespace Realmius_mancheck
             try
             {
                 syncService.Dispose();
-                syncService.DeleteDatabase();
+                //syncService.DeleteDatabase();
             }
             catch (Exception e)
             {
@@ -118,15 +121,6 @@ namespace Realmius_mancheck
 
         private static string realmPath = Guid.NewGuid().ToString();
 
-        public static void InitializeDatabasePaths()
-        {
-            if (string.IsNullOrEmpty(realmPath))
-            {
-                ResetDatabasePaths();
-            }
-            RealmiusSyncService.RealmiusDbPath = realmPath + "_sync";
-        }
-
         public static void ResetDatabasePaths()
         {
             if (CurrenUser == null)
@@ -137,12 +131,19 @@ namespace Realmius_mancheck
             {
                 realmPath = CurrenUser.Name;
             }
-            
+        }
+
+        public static void InitializeDatabasePaths()
+        {
+            if (string.IsNullOrEmpty(realmPath))
+            {
+                ResetDatabasePaths();
+            }
+            RealmiusSyncService.RealmiusDbPath = realmPath + "_sync";
         }
 
         private void InitRealmData()
         {
-            //var realm = Realm.GetInstance();
             var realm = App.GetRealm();
             realm.Write(() =>
             {
@@ -200,14 +201,14 @@ namespace Realmius_mancheck
                     Id = "10002",
                     CreatingDateTime = DateTimeOffset.Now,
                     MessageStatusCode = 2,
-                    Text = "What's up>"
+                    Text = "What's up?"
                 });
             });
         }
 
-        #endregion // - Realm services -
+        #endregion // - REALM SERVICES -
 
-        #region - USER PROCCESSING -
+        #region - PROCCESSING USER -
 
         public void InitAuthorisation()
         {
@@ -227,7 +228,7 @@ namespace Realmius_mancheck
         }
 
         public EventHandler RefreshViews;
-        //TODO: не сохраняются введенные данные
+        
         private void GetUserCredentials()
         {
             IDictionary<string, object> properties = Application.Current.Properties;
@@ -286,7 +287,7 @@ namespace Realmius_mancheck
             Application.Current.SavePropertiesAsync();
         }
 
- #endregion // - USER PROCESSING -
+ #endregion // - PROCESSING USER -
         
         #region - LIFECYCLE -
 

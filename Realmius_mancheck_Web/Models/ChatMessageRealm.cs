@@ -19,15 +19,6 @@ namespace Realmius_mancheck_Web.Models
             public DateTimeOffset CreatingDateTime { get; set; }
 
             public int MessageStatusCode { get; set; }
-
-            public MessageStatus MessageStatus => (MessageStatus)MessageStatusCode;
         }
 
-        public enum MessageStatus
-        {
-            Sended = 1,
-            Received = 2,
-            Readed = 3,
-            Error = -1
-        }
 }
