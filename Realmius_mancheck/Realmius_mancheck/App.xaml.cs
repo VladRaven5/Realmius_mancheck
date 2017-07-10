@@ -77,7 +77,7 @@ namespace Realmius_mancheck
                     {
                     },
                     ShouldDeleteIfMigrationNeeded = false,
-                    SchemaVersion = 3,
+                    SchemaVersion = 4,
                 };
                 return config;
             }

@@ -12,6 +12,7 @@ namespace Realmius_mancheck.RealmEntities
     {
         public string MobilePrimaryKey => Id;
 
+        [PrimaryKey]
         public string Id { get; set; }
 
         public string Text { get; set; }
