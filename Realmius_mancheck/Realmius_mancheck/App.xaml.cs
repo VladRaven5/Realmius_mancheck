@@ -65,6 +65,7 @@ namespace Realmius_mancheck
         }
 
 
+
         #region - REALM SERVICES -
 
         private static RealmConfiguration RealmConfiguration
@@ -90,10 +91,19 @@ namespace Realmius_mancheck
         }
         private void SetRealmConnection()
         {
+            //syncService = SyncServiceFactory.CreateUsingSignalR(
+            //    GetRealm,
+            //    new Uri(hostUrl + "/Realmius" + (needAuthorisation ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
+            //    TypesToSync);
+
             syncService = SyncServiceFactory.CreateUsingSignalR(
                 GetRealm,
-                new Uri(hostUrl + "/Realmius" + (needAuthorisation ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
-                TypesToSync);
+                new Uri(hostUrl + "/Realmius" + (needAuthorisation
+                            ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password
+                            : null)),
+                TypesToSync,
+                false,
+                new Logger());
 
             if (!GetRealm().All<NoteRealm>().Any() &&  !GetRealm().All<PhotoRealm>().Any() && !GetRealm().All<ChatMessageRealm>().Any())
             {
