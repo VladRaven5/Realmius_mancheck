@@ -36,12 +36,9 @@ namespace Realmius_mancheck_Web
                     app,
                     new RealmiusServerAuthConfiguration()
                     {
-                        TypesToSyncList = TypesForSync /*new List<Type>()
-                        {
-                            typeof(NoteRealm),
-                            typeof(PhotoRealm)
-                        }*/
-                    });
+                        TypesToSyncList = TypesForSync
+                    },
+                    new Logger());
             }
             else
             {
@@ -49,12 +46,8 @@ namespace Realmius_mancheck_Web
                 "/Realmius",
                 app,
                 () => new RealmiusServerContext(),
-                TypesForSync
-                /*new[]
-                {
-                    typeof(NoteRealm),
-                    typeof(PhotoRealm)
-                }*/);
+                null,
+                TypesForSync);
             }
         }
     }

@@ -17,5 +17,10 @@ namespace Realmius_mancheck_Web.Models
         public string Password { get; set; }
 
         public string Role { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}({Role})";
+        }
     }
 }
