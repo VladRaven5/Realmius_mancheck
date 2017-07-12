@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck.Android", "Realmius_mancheck\Realmius_mancheck.Android\Realmius_mancheck.Android.csproj", "{4F891491-DD3A-4BF6-A974-1226841E09FB}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck.UWP", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck.iOS", "Realmius_mancheck\Realmius_mancheck.iOS\Realmius_mancheck.iOS.csproj", "{1972BC0A-1D54-4662-85DE-D642AE375C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck_Web", "Realmius_mancheck_Web\Realmius_mancheck_Web\Realmius_mancheck_Web.csproj", "{0C65DB08-3188-428F-9ED8-6599856DE402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Realmius_mancheck_Web", "Realmius_mancheck_Web\Realmius_mancheck_Web.csproj", "{0C65DB08-3188-428F-9ED8-6599856DE402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
