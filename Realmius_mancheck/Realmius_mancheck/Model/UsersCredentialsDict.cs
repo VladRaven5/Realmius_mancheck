@@ -12,8 +12,8 @@ namespace Realmius_mancheck.Model
         {
             {"empty", "empty" },
             { "vlad","123"},
-            { "homer", "321"},
-            {"odmen", "odmen" },
+            { "homer", "simpson"},
+            {"admin", "admin" },
             
         };
 

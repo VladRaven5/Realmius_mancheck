@@ -17,7 +17,7 @@
             <StackLayout IsVisible="{Binding AccessGranted, Converter={StaticResource InvertBooleanConverter}}">
                 <Label Text="Let's login!" HorizontalOptions="Center" />
                 <Label Text="Your name:"/>
-                <Entry Text="{Binding UserName}" Placeholder="Homer" PlaceholderColor="Gray"/>
+                <Entry Text="{Binding UserName}" Placeholder="name" PlaceholderColor="Gray"/>
                 <Label Text="Password:"/>
                 <Entry Text="{Binding UserPassword}" IsPassword="True"/>
                 <Grid HorizontalOptions="Center" ColumnSpacing="50">

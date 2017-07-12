@@ -147,11 +147,11 @@ namespace Realmius_mancheck
             var realm = App.GetRealm();
             realm.Write(() =>
             {
-                realm.Add(new NoteRealm() { Id = "1001", Title = "Film", Description = "Fight club", PostTime = DateTimeOffset.Now });
+                realm.Add(new NoteRealm() { Id = "1001", Title = "Film", Description = "Fight club", PostTime = DateTimeOffset.Now }, true);
 
-                realm.Add(new NoteRealm() { Id = "1002", Title = "Cleaning", Description = "Clean the room", PostTime = DateTimeOffset.Now });
+                realm.Add(new NoteRealm() { Id = "1002", Title = "Cleaning", Description = "Clean the room", PostTime = DateTimeOffset.Now }, true);
 
-                realm.Add(new NoteRealm() { Id = "1003", Title = "Pet", Description = "Feed the dog", PostTime = DateTimeOffset.Now });
+                realm.Add(new NoteRealm() { Id = "1003", Title = "Pet", Description = "Feed the dog", PostTime = DateTimeOffset.Now }, true);
 
                 realm.Add(new PhotoRealm()
                 {
@@ -159,7 +159,7 @@ namespace Realmius_mancheck
                     Title = "Bike",
                     PhotoUri = "https://auto.ndtvimg.com/bike-images/gallery/honda/cbr-150r/exterior/bike-img.png",
                     PostTime = DateTimeOffset.Now
-                });
+                }, true);
 
                 realm.Add(new PhotoRealm()
                 {
@@ -167,7 +167,7 @@ namespace Realmius_mancheck
                     Title = "Plain",
                     PhotoUri = "http://az616578.vo.msecnd.net/files/2016/06/11/636012615152249351-1424983048_cover4.jpg",
                     PostTime = DateTimeOffset.Now
-                });
+                }, true);
 
                 realm.Add(new PhotoRealm()
                 {
@@ -175,7 +175,7 @@ namespace Realmius_mancheck
                     Title = "Helicopter",
                     PhotoUri = "https://i.ytimg.com/vi/_rLTPRGpA60/maxresdefault.jpg",
                     PostTime = DateTimeOffset.Now
-                });
+                }, true);
 
                 realm.Add(new ChatMessageRealm()
                 {
@@ -184,7 +184,7 @@ namespace Realmius_mancheck
                     CreatingDateTime = DateTimeOffset.Now,
                     MessageStatusCode = 2,
                     Text = "Hi all!"
-                });
+                }, true);
 
                 realm.Add(new ChatMessageRealm()
                 {
@@ -193,7 +193,7 @@ namespace Realmius_mancheck
                     CreatingDateTime = DateTimeOffset.Now,
                     MessageStatusCode = 1,
                     Text = "Hi!"
-                });
+                }, true);
 
                 realm.Add(new ChatMessageRealm()
                 {
@@ -202,7 +202,7 @@ namespace Realmius_mancheck
                     CreatingDateTime = DateTimeOffset.Now,
                     MessageStatusCode = 2,
                     Text = "What's up?"
-                });
+                }, true);
             });
         }
 

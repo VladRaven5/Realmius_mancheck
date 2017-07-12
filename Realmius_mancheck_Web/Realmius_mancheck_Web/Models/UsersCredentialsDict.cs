@@ -19,11 +19,11 @@ namespace Realmius_mancheck_Web.Models
             }},
             { "homer", new User()
             {
-                Id = "2", Name = "Homer", Password = "321", Tags = new List<string>(){"all", "user"}, Role = "user"
+                Id = "2", Name = "Homer", Password = "simpson", Tags = new List<string>(){"all", "user"}, Role = "user"
             }},
-            {"odmen", new User()
+            {"admin", new User()
             {
-                Id = "0", Name = "Odmen", Password = "odmen", Tags = new List<string>(){"all", "admin"}, Role = "admin"
+                Id = "0", Name = "Admin", Password = "admin", Tags = new List<string>(){"all", "admin"}, Role = "admin"
             }}
         };
 

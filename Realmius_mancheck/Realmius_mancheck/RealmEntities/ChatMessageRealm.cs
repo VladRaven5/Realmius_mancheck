@@ -41,9 +41,9 @@ namespace Realmius_mancheck.RealmEntities
 
     public enum MessageStatus
     {
-        Sended = 1,
+        Sent = 1,
         Received = 2,
-        Readed = 3,
+        Read = 3,
         Error = -1
     }
 }
