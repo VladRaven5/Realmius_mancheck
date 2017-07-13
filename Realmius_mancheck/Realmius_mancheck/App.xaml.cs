@@ -28,6 +28,8 @@ namespace Realmius_mancheck
 
         private static IRealmiusSyncService syncService;
 
+        private ILogger _logger = new Logger();
+
         private readonly string hostUrl = "http://192.168.10.109:9930";
 
         private Type[] TypesToSync = new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
@@ -101,9 +103,9 @@ namespace Realmius_mancheck
                 new Uri(hostUrl + "/Realmius" + (needAuthorisation
                             ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password
                             : null)),
-                TypesToSync,
-                false,
-                new Logger());
+                TypesToSync);
+
+            syncService.Logger = _logger;
 
             if (!GetRealm().All<NoteRealm>().Any() &&  !GetRealm().All<PhotoRealm>().Any() && !GetRealm().All<ChatMessageRealm>().Any())
             {

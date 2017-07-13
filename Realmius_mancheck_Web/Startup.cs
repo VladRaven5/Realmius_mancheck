@@ -37,8 +37,7 @@ namespace Realmius_mancheck_Web
                     new RealmiusServerAuthConfiguration()
                     {
                         TypesToSyncList = TypesForSync
-                    },
-                    new Logger());
+                    });
             }
             else
             {
@@ -46,7 +45,6 @@ namespace Realmius_mancheck_Web
                 "/Realmius",
                 app,
                 () => new RealmiusServerContext(),
-                null,
                 TypesForSync);
             }
         }

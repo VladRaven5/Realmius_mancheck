@@ -4,6 +4,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Security.Provider;
 using Realmius.Server;
 using Realmius.Server.Configurations;
+using Realmius.Server.Infrastructure;
 using Realmius.Server.Models;
 using Realmius_mancheck_Web.DAL;
 using Realmius_mancheck_Web.Interfaces;
@@ -19,7 +20,9 @@ namespace Realmius_mancheck_Web
 
         public IList<Type> TypesToSyncList { get; set; }
 
-        public override IList<Type> TypesToSync => Startup.TypesForSync; // { get { return new List<Type>() {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};} }
+        public override IList<Type> TypesToSync => Startup.TypesForSync;
+
+        public override ILogger Logger { get; set; } = new Logger();
 
         public override User AuthenticateUser(IRequest request)
         {
@@ -81,8 +84,6 @@ namespace Realmius_mancheck_Web
             }
 
             return null;
-
-            //return new List<string>(){"all"};
         }
 
         public override IList<string> GetTagsForUser(User user, ChangeTrackingDbContext db)
@@ -98,7 +99,6 @@ namespace Realmius_mancheck_Web
             }
 
             return null;
-            //return new List<string>() { "all" };
         }
 
 #region - USER'S CREDS -
