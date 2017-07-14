@@ -22,7 +22,7 @@ namespace Realmius_mancheck_Web.Controllers
         }
 
         // GET: Photos/Details/5
-        public ActionResult Details(/*int?*/string id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -62,7 +62,7 @@ namespace Realmius_mancheck_Web.Controllers
         }
 
         // GET: Photos/Edit/5
-        public ActionResult Edit(/*int?*/string id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -93,7 +93,7 @@ namespace Realmius_mancheck_Web.Controllers
         }
 
         // GET: Photos/Delete/5
-        public ActionResult Delete(/*int?*/string id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -110,7 +110,7 @@ namespace Realmius_mancheck_Web.Controllers
         // POST: Photos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(/*int*/string id)
+        public ActionResult DeleteConfirmed(string id)
         {
             PhotoRealm photo = db.Photos.Find(id);
             db.Photos.Remove(photo);

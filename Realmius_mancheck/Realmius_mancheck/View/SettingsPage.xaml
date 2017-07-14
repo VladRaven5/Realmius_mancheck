@@ -4,8 +4,8 @@
              x:Class="Realmius_mancheck.SettingsPage"
              Title="Settings">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center">
-            <Label Text="{Binding CurrentUser.Name}"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding CurrentUser.Name, StringFormat='You authorised as {0}'}" HorizontalOptions="Center"/>
             <Button Command="{Binding LoginButtonClickCommand}">
                 <Button.Triggers>
                     <DataTrigger Binding="{Binding UserAuthorised}" Value="True" TargetType="Button">

@@ -14,14 +14,7 @@ namespace Realmius_mancheck.ViewModel
 {
     public class NotesPageViewModel : RootViewModel
     {
-        public IRealmCollection<NoteRealm> Notes { get; set; } /*= new ObservableCollection<NoteRealm>()
-        {
-            new NoteRealm() {Id = 1001, Title = "Film", Description = "Fight club"},
-
-            new NoteRealm() {Id = 1002, Title = "Cleaning", Description = "Clean the room"},
-
-            new NoteRealm() {Id = 1003, Title = "Pet", Description = "Feed the dog"}
-        };*/
+        public IRealmCollection<NoteRealm> Notes { get; set; } 
 
         public string NewNoteTitle { get; set; }
 

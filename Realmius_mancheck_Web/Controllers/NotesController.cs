@@ -63,7 +63,7 @@ namespace Realmius_mancheck_Web.Controllers
         }
 
         // GET: Notes/Edit/5
-        public ActionResult Edit(/*int?*/string id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -94,7 +94,7 @@ namespace Realmius_mancheck_Web.Controllers
         }
 
         // GET: Notes/Delete/5
-        public ActionResult Delete(/*int?*/string id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -111,7 +111,7 @@ namespace Realmius_mancheck_Web.Controllers
         // POST: Notes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(/*int*/string id)
+        public ActionResult DeleteConfirmed(string id)
         {
             NoteRealm note = db.Notes.Find(id);
             db.Notes.Remove(note);
