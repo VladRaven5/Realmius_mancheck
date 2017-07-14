@@ -18,6 +18,6 @@ namespace Realmius_mancheck_Web.Models
 
         public DateTimeOffset PostTime { get; set; }
 
-        public string UserRole { get; set; }
+        public int UserRole { get; set; }
     }
 }

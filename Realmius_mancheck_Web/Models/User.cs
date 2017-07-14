@@ -16,11 +16,19 @@ namespace Realmius_mancheck_Web.Models
 
         public string Password { get; set; }
 
-        public string Role { get; set; }
+        public int Role { get; set; }
 
         public override string ToString()
         {
-            return $"{Name}({Role})";
+            return $"{Name}({(UserRole)Role})";
         }
+    }
+
+    public enum UserRole
+    {
+        Anonymous = 0,
+        User = 1,
+        ProUser = 2,
+        SuperUser = 3
     }
 }

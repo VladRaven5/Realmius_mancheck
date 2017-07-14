@@ -44,12 +44,10 @@ namespace Realmius_mancheck_Web
             }
             if (args.Entity is PhotoRealm)
             {
-                var newPhoto = args.Entity as PhotoRealm;
                 return true;
             }
             if (args.Entity is ChatMessageRealm)
             {
-                var newMessage = args.Entity as ChatMessageRealm;
                 return true;
             }
             return false;
@@ -61,15 +59,14 @@ namespace Realmius_mancheck_Web
             if (obj is NoteRealm)
             {
                 var currentNote = obj as NoteRealm;
-                if (currentNote.UserRole == null)
+                int role = currentNote.UserRole;
+                IList<string> result = new List<string>();
+                while ((UserRole) role)
                 {
-                    currentNote.UserRole = forAll;
+                    result.Add(role.ToString());
+                    role++;
                 }
-                if (ObjectsTagsHierarchy.ContainsKey(currentNote.UserRole))
-                {
-                    return ObjectsTagsHierarchy[currentNote.UserRole];
-                }
-                return null;
+                return result;
             }
 
             if (obj is PhotoRealm)
@@ -88,11 +85,6 @@ namespace Realmius_mancheck_Web
 
         public override IList<string> GetTagsForUser(User user, ChangeTrackingDbContext db)
         {
-            if (user.Role == null)
-            {
-                user.Role = unknwnRole;
-            }
-
             if (UsersTagsHierarchy.ContainsKey(user.Role))
             {
                 return UsersTagsHierarchy[user.Role];
@@ -112,7 +104,7 @@ namespace Realmius_mancheck_Web
         //какие роли юзеров имеют доступ к объектам, выложенным юзерами с ролями, равными ключу 
         private Dictionary<string, List<string>> ObjectsTagsHierarchy = new Dictionary<string, List<string>>()
         {
-            { unknwnRole, new List<string>() {unknwnRole, userRole, devRole, adminRole}},
+            { unknwnRole, new List<string>() {UserRole.Anonymous.ToString(), UserRole.User.ToString(), devRole, adminRole}},
 
             { forAll, new List<string>() {unknwnRole, userRole, devRole, adminRole}},
 
