@@ -20,7 +20,7 @@ namespace Realmius_mancheck_Web.DAL
                     Id = "1",
                     Title = "Shopping list",
                     PostTime = DateTime.Now,
-                    UserRole = "dev"
+                    UserRole = 2
                 },
 
                 new NoteRealm()
@@ -29,7 +29,7 @@ namespace Realmius_mancheck_Web.DAL
                     Id = "2",
                     Title = "Meet Dan",
                     PostTime = DateTime.Now,
-                    UserRole = "all"
+                    UserRole = 0
                 },
 
                 new NoteRealm()
@@ -38,7 +38,7 @@ namespace Realmius_mancheck_Web.DAL
                     Id = "3",
                     Title = "Prepare to pass",
                     PostTime = DateTime.Now,
-                    UserRole = "admin"
+                    UserRole = 3
                 }
             };
 

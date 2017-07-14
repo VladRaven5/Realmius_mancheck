@@ -11,19 +11,19 @@ namespace Realmius_mancheck_Web.Models
         {
             {"admin", new User()
             {
-                Id = "0", Name = "Admin", Password = "admin", Tags = new List<string>(){"all", "admin"}, Role = 3
+                Id = "0", Name = "Admin", Password = "admin", Role = 3
             }},
-            { "vlad",new User()
+            { "john",new User()
             {
-                Id = "1", Name = "Vlad", Password = "123", Tags = new List<string>(){"all", "dev"}, Role= 2
+                Id = "1", Name = "John", Password = "123", Role= 2
             }},
             { "homer", new User()
             {
-                Id = "2", Name = "Homer", Password = "simpson", Tags = new List<string>(){"all", "user"}, Role = 1
+                Id = "2", Name = "Homer", Password = "simpson", Role = 1
             }},
             { "anonymous", new User()
             {
-                Id = "3", Name = "Anonymous", Password = "Anonymous", Tags = new List<string>(){"all"}, Role = 0
+                Id = "3", Name = "Anonymous", Password = "anonymous", Role = 0
             }},
         };
 
@@ -43,9 +43,8 @@ namespace Realmius_mancheck_Web.Models
                 {
                     Id = "3",
                     Name = "Anonymous",
-                    Password = "Anonymous",
-                    Tags = new List<string>() { "all" },
-                    Role = ""
+                    Password = "anonymous",
+                    Role = 0
                 };
         }
     }

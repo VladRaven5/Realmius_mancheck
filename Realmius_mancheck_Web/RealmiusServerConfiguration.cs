@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Security.Provider;
 using Realmius.Server;
@@ -59,25 +60,18 @@ namespace Realmius_mancheck_Web
             if (obj is NoteRealm)
             {
                 var currentNote = obj as NoteRealm;
-                int role = currentNote.UserRole;
-                IList<string> result = new List<string>();
-                while ((UserRole) role)
-                {
-                    result.Add(role.ToString());
-                    role++;
-                }
-                return result;
+                var tagsList = Enum.GetValues(typeof(UserRole)).Cast<int>().Where(v => v >= currentNote.UserRole).Select(x => x.ToString()).ToList();
+                return tagsList;
             }
 
             if (obj is PhotoRealm)
             {
-                var currentObject = obj as PhotoRealm;
-                return new List<string>() { "all" };
+                return new List<string>() { ((int)UserRole.Anonymous).ToString() };
             }
 
             if (obj is ChatMessageRealm)
             {
-                return new List<string>() { "all" };
+                return new List<string>() { ((int)UserRole.Anonymous).ToString() };
             }
 
             return null;
@@ -85,50 +79,7 @@ namespace Realmius_mancheck_Web
 
         public override IList<string> GetTagsForUser(User user, ChangeTrackingDbContext db)
         {
-            if (UsersTagsHierarchy.ContainsKey(user.Role))
-            {
-                return UsersTagsHierarchy[user.Role];
-            }
-
-            return null;
+            return Enum.GetValues(typeof(UserRole)).Cast<int>().Where(v => v <= user.Role).Select(x => x.ToString()).ToList();
         }
-
-#region - USER'S CREDS -
-
-        private static string adminRole = "admin";
-        private static string devRole = "dev";
-        private static string userRole = "user";
-        private static string unknwnRole = "";
-        private static string forAll = "all";
-
-        //какие роли юзеров имеют доступ к объектам, выложенным юзерами с ролями, равными ключу 
-        private Dictionary<string, List<string>> ObjectsTagsHierarchy = new Dictionary<string, List<string>>()
-        {
-            { unknwnRole, new List<string>() {UserRole.Anonymous.ToString(), UserRole.User.ToString(), devRole, adminRole}},
-
-            { forAll, new List<string>() {unknwnRole, userRole, devRole, adminRole}},
-
-            { userRole, new List<string>() {userRole, devRole, adminRole} },
-
-            { devRole, new List<string>() {devRole, adminRole} },
-
-            { adminRole, new List<string>() { adminRole } }
-        };
-
-        //к какому контенту имеют доступ юзеры определенных ролей(ключи)
-        private Dictionary<string, List<string>> UsersTagsHierarchy = new Dictionary<string, List<string>>()
-        {
-            { unknwnRole, new List<string>() {unknwnRole, forAll}},
-
-            { forAll, new List<string>() {unknwnRole, userRole, forAll}},
-
-            { userRole, new List<string>() { unknwnRole, userRole, forAll } },
-
-            { devRole, new List<string>() { unknwnRole, userRole, devRole, forAll } },
-
-            { adminRole, new List<string>() { unknwnRole, userRole, devRole, adminRole, forAll } }
-        };
-
-#endregion // - USER'S CREDS -
     }
 }
