@@ -47,7 +47,7 @@ namespace Realmius_mancheck_Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Text,AuthorName,CreatingDateTime,MessageStatusCode")] ChatMessageRealm chatMessageRealm)
+        public ActionResult Create([Bind(Include = "Id,Text,AuthorName,CreatingDateTime")] ChatMessageRealm chatMessageRealm)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Realmius_mancheck_Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Text,AuthorName,CreatingDateTime,MessageStatusCode")] ChatMessageRealm chatMessageRealm)
+        public ActionResult Edit([Bind(Include = "Id,Text,AuthorName,CreatingDateTime")] ChatMessageRealm chatMessageRealm)
         {
             if (ModelState.IsValid)
             {

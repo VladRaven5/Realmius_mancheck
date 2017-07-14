@@ -185,19 +185,17 @@ namespace Realmius_mancheck
 
                 realm.Add(new ChatMessageRealm()
                 {
-                    AuthorName = "odmen",
+                    AuthorName = "admin",
                     Id = "10000",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
                     Text = "Hi all!"
                 }, true);
 
                 realm.Add(new ChatMessageRealm()
                 {
-                    AuthorName = "vlad",
+                    AuthorName = "john",
                     Id = "10001",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 1,
                     Text = "Hi!"
                 }, true);
 
@@ -206,7 +204,6 @@ namespace Realmius_mancheck
                     AuthorName = "homer",
                     Id = "10002",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
                     Text = "What's up?"
                 }, true);
             });

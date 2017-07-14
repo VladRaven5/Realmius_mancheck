@@ -9,9 +9,9 @@ namespace Realmius_mancheck_Web.Models
     {
         private static Dictionary<string, User> _usersCredentials = new Dictionary<string, User>()
         {
-            {"empty", new User()
+            {"admin", new User()
             {
-                Id = "0", Name = "empty", Password = "empty", Tags = new List<string>(){"all"}, Role = ""
+                Id = "0", Name = "Admin", Password = "admin", Tags = new List<string>(){"all", "admin"}, Role = "admin"
             }},
             { "vlad",new User()
             {
@@ -21,10 +21,10 @@ namespace Realmius_mancheck_Web.Models
             {
                 Id = "2", Name = "Homer", Password = "simpson", Tags = new List<string>(){"all", "user"}, Role = "user"
             }},
-            {"admin", new User()
+            { "anonymous", new User()
             {
-                Id = "0", Name = "Admin", Password = "admin", Tags = new List<string>(){"all", "admin"}, Role = "admin"
-            }}
+                Id = "3", Name = "Anonymous", Password = "Anonymous", Tags = new List<string>(){"all"}, Role = ""
+            }},
         };
 
         public static User GetUser(string name, string password)
@@ -33,6 +33,20 @@ namespace Realmius_mancheck_Web.Models
                 return _usersCredentials[name];
 
             return null;
+        }
+
+        public static User GetDefaultUser()
+        {
+            return _usersCredentials.Count > 0
+                ? _usersCredentials.Last().Value
+                : new User
+                {
+                    Id = "3",
+                    Name = "Anonymous",
+                    Password = "Anonymous",
+                    Tags = new List<string>() { "all" },
+                    Role = ""
+                };
         }
     }
 }

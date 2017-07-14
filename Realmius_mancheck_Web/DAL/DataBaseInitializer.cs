@@ -8,7 +8,6 @@ using Realmius_mancheck_Web.Models;
 namespace Realmius_mancheck_Web.DAL
 {
     public class DataBaseInitializer :
-        //System.Data.Entity.DropCreateDatabaseAlways<RealmiusServerContext>
         System.Data.Entity.DropCreateDatabaseIfModelChanges<RealmiusServerContext>
     {
         protected override void Seed(RealmiusServerContext context)
@@ -19,7 +18,7 @@ namespace Realmius_mancheck_Web.DAL
                 {
                     Description = "Apples, tomatoes, crisps",
                     Id = "1",
-                    Title = "Shoping list",
+                    Title = "Shopping list",
                     PostTime = DateTime.Now,
                     UserRole = "dev"
                 },
@@ -44,8 +43,7 @@ namespace Realmius_mancheck_Web.DAL
             };
 
             context.Notes.AddRange(notes);
-            //context.SaveChanges();
-
+            
             var photos = new List<PhotoRealm>()
             {
                 new PhotoRealm()
@@ -78,20 +76,18 @@ namespace Realmius_mancheck_Web.DAL
             {
                 new ChatMessageRealm()
                 {
-                    AuthorName = "odmen",
+                    AuthorName = "admin",
                     Id = "10003",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
-                    Text = "Hi all. Im admin from server!"
+                    Text = "Hi all. It's Admin's msg from server"
                 },
 
                 new ChatMessageRealm()
                 {
-                    AuthorName = "vlad",
+                    AuthorName = "john",
                     Id = "10004",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 1,
-                    Text = "Hi! Im vlad frm server"
+                    Text = "Hi! It's John's msg from server"
                 },
 
                 new ChatMessageRealm()
@@ -99,8 +95,7 @@ namespace Realmius_mancheck_Web.DAL
                     AuthorName = "homer",
                     Id = "10005",
                     CreatingDateTime = DateTimeOffset.Now,
-                    MessageStatusCode = 2,
-                    Text = "What's up? Im homer frm server"
+                    Text = "What's up? It's Homer's msg from server"
                 }
             };
             context.ChatMessages.AddRange(messages);

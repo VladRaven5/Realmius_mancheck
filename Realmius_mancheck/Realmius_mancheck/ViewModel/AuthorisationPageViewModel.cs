@@ -57,7 +57,7 @@ namespace Realmius_mancheck.ViewModel
                 OnPropertyChanged(nameof(CurrentUser));
                 UserAuthorised = true;
                 OnPropertyChanged(nameof(UserAuthorised));
-                GrantAccess();
+                GrantAccess(4000);
             }
             else
             {
@@ -68,17 +68,17 @@ namespace Realmius_mancheck.ViewModel
 
         public void Skip()
         {
-            var testUser = UsersCredentialsDict.GetUser(0);
+            var testUser = UsersCredentialsDict.GetDefaultUserCreds();
             CurrentUser = new User(testUser.Key, testUser.Value);
             OnPropertyChanged(nameof(CurrentUser));
-            GrantAccess();
+            GrantAccess(0);
         }
 
-        public async void GrantAccess()
+        public async void GrantAccess(int delayTime)
         {
             AccessGranted = true;
             OnPropertyChanged(nameof(AccessGranted));
-            await Task.Delay(4000);
+            await Task.Delay(delayTime);
             OnAuthorisePageClosed?.Invoke(new object(), EventArgs.Empty);
         }
 

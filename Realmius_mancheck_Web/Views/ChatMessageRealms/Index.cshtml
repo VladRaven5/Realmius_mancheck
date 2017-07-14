@@ -20,9 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CreatingDateTime)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageStatusCode)
-        </th>
         <th></th>
     </tr>
 
@@ -36,9 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatingDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageStatusCode)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

@@ -14,8 +14,9 @@ namespace Realmius_mancheck.Model
 
         public User()
         {
-            Name = "empty";
-            Password = "empty";
+            var defaultUser = UsersCredentialsDict.GetDefaultUserCreds();
+            Name = defaultUser.Key;
+            Password = defaultUser.Value;
         }
 
         public User(string name, string password)

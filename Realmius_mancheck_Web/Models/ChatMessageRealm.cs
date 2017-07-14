@@ -17,8 +17,6 @@ namespace Realmius_mancheck_Web.Models
             public string AuthorName { get; set; }
 
             public DateTimeOffset CreatingDateTime { get; set; }
-
-            public int MessageStatusCode { get; set; }
         }
 
 }

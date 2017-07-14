@@ -21,11 +21,6 @@ namespace Realmius_mancheck.RealmEntities
 
         public DateTimeOffset CreatingDateTime { get; set;  }
 
-        public int MessageStatusCode { get; set; }
-
-        [Ignored]
-        public MessageStatus MessageStatus => (MessageStatus)MessageStatusCode;
-
         public ChatMessageRealm(string text)
         {
             Id = Guid.NewGuid().ToString();
@@ -37,13 +32,5 @@ namespace Realmius_mancheck.RealmEntities
         public ChatMessageRealm()
         {
         }
-    }
-
-    public enum MessageStatus
-    {
-        Sent = 1,
-        Received = 2,
-        Read = 3,
-        Error = -1
     }
 }

@@ -10,11 +10,10 @@ namespace Realmius_mancheck.Model
     {
         private static Dictionary<string, string> _usersCredentials = new Dictionary<string, string>()
         {
-            {"empty", "empty" },
-            { "vlad","123"},
+            { "admin", "admin" },
+            { "john","123"},
             { "homer", "simpson"},
-            {"admin", "admin" },
-            
+            { "anonymous", "anonymous" }
         };
 
         public static bool CheckUser(string name, string password)
@@ -33,6 +32,13 @@ namespace Realmius_mancheck.Model
             }
 
             return new KeyValuePair<string, string>("error","error");
+        }
+
+        public static KeyValuePair<string,string> GetDefaultUserCreds()
+        {
+            return _usersCredentials.Count > 0
+                ? _usersCredentials.Last()
+                : new KeyValuePair<string, string>("anonymous", "anonymous");
         }
     }
 }
