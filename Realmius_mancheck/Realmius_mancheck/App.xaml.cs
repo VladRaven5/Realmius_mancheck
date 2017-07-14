@@ -65,8 +65,7 @@ namespace Realmius_mancheck
                 RefreshViews?.Invoke(new object(), EventArgs.Empty);
             }
         }
-
-
+        
 
         #region - REALM SERVICES -
 
@@ -93,11 +92,6 @@ namespace Realmius_mancheck
         }
         private void SetRealmConnection()
         {
-            //syncService = SyncServiceFactory.CreateUsingSignalR(
-            //    GetRealm,
-            //    new Uri(hostUrl + "/Realmius" + (needAuthorisation ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password : null)),
-            //    TypesToSync);
-
             syncService = SyncServiceFactory.CreateUsingSignalR(
                 GetRealm,
                 new Uri(hostUrl + "/Realmius" + (needAuthorisation
