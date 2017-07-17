@@ -18,7 +18,7 @@ namespace Realmius_mancheck
 {
     public partial class App : Application
     {
-        public static User CurrenUser { get; set; }
+        public static User CurrentUser { get; set; }
 
         public static bool UserAuthorised { get; set; }
         
@@ -30,6 +30,7 @@ namespace Realmius_mancheck
 
         private ILogger _logger = new Logger();
 
+        //Howto connect emulator to local server:https://stackoverflow.com/a/5249856
         private readonly string hostUrl = "http://192.168.10.109:9930";
 
         private Type[] TypesToSync = new Type[] {typeof(NoteRealm), typeof(PhotoRealm), typeof(ChatMessageRealm)};
@@ -59,14 +60,13 @@ namespace Realmius_mancheck
             }
             else
             {
-                realmPath = CurrenUser.Name;
+                realmPath = CurrentUser.Name;
                 InitializeDatabasePaths();
                 SetRealmConnection();
                 RefreshViews?.Invoke(new object(), EventArgs.Empty);
             }
         }
         
-
         #region - REALM SERVICES -
 
         private static RealmConfiguration RealmConfiguration
@@ -95,17 +95,13 @@ namespace Realmius_mancheck
             syncService = SyncServiceFactory.CreateUsingSignalR(
                 GetRealm,
                 new Uri(hostUrl + "/Realmius" + (needAuthorisation
-                            ? "?userLogin=" + CurrenUser.Name + "&pass=" + CurrenUser.Password
+                            ? "?userLogin=" + CurrentUser.Name + "&pass=" + CurrentUser.Password
                             : null)),
                 TypesToSync);
 
             syncService.Logger = _logger;
-
-            if (!GetRealm().All<NoteRealm>().Any() &&  !GetRealm().All<PhotoRealm>().Any() && !GetRealm().All<ChatMessageRealm>().Any())
-            {
-                InitRealmData();
-            }
             
+            InitRealmData();
         }
 
         public void ReinitializeDatabases()
@@ -129,13 +125,13 @@ namespace Realmius_mancheck
 
         public static void ResetDatabasePaths()
         {
-            if (CurrenUser == null)
+            if (CurrentUser == null)
             {
                 realmPath = Guid.NewGuid().ToString();
             }
             else
             {
-                realmPath = CurrenUser.Name;
+                realmPath = CurrentUser.Name;
             }
         }
 
@@ -251,35 +247,35 @@ namespace Realmius_mancheck
 
             if (!String.IsNullOrWhiteSpace(name) && !String.IsNullOrWhiteSpace(password))
             {
-                CurrenUser = new User(name, password);
+                CurrentUser = new User(name, password);
                 UserAuthorised = true;
             }
             else
             {
                 UserAuthorised = false;
-                CurrenUser = new User();
+                CurrentUser = new User();
             }
-            OnPropertyChanged(nameof(CurrenUser));
+            OnPropertyChanged(nameof(CurrentUser));
             OnPropertyChanged(nameof(UserAuthorised));
         }
 
         private void SaveUserCredentials()
         {
             IDictionary<string, object> properties = Application.Current.Properties;
-            foreach (PropertyInfo prop in CurrenUser.GetType().GetRuntimeProperties())
+            foreach (PropertyInfo prop in CurrentUser.GetType().GetRuntimeProperties())
             {
                 if (!properties.ContainsKey(prop.Name))
                 {
-                    if (prop.GetValue(CurrenUser, null) != null)
+                    if (prop.GetValue(CurrentUser, null) != null)
                     {
-                        properties.Add(prop.Name, prop.GetValue(CurrenUser, null).ToString());
+                        properties.Add(prop.Name, prop.GetValue(CurrentUser, null).ToString());
                     }
                 }
                 else
                 {
-                    if (prop.GetValue(CurrenUser, null) != null)
+                    if (prop.GetValue(CurrentUser, null) != null)
                     {
-                        properties[prop.Name] = prop.GetValue(CurrenUser, null).ToString();
+                        properties[prop.Name] = prop.GetValue(CurrentUser, null).ToString();
                     }
                     else
                     {

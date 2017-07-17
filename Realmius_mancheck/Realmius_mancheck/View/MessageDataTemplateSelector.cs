@@ -20,7 +20,7 @@ namespace Realmius_mancheck
 
             if (message == null)
                 return null;
-            if (message.AuthorName == App.CurrenUser.Name)
+            if (message.AuthorName == App.CurrentUser.Name)
             {
                 return OutgoingMessageTemplate;
             }

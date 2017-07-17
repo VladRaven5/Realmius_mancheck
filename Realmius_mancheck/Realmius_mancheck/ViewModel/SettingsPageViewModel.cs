@@ -17,7 +17,7 @@ namespace Realmius_mancheck.ViewModel
             set { App.UserAuthorised = value; }
         }
 
-        public User CurrentUser => App.CurrenUser;
+        public User CurrentUser => App.CurrentUser;
 
         public ICommand LoginButtonClickCommand { get; set; }
 
@@ -30,7 +30,7 @@ namespace Realmius_mancheck.ViewModel
         {
             if (UserAuthorised)
             {
-                App.CurrenUser = new User();
+                App.CurrentUser = new User();
                 App.UserAuthorised = false;
                 OnPropertyChanged(nameof(UserAuthorised));
                 App.Instance.ReinitializeDatabases();
