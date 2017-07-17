@@ -39,7 +39,6 @@ namespace Realmius_mancheck.ViewModel
 
             realmMessages.SubscribeForNotifications((o, y, e) =>
             {
-                //TODO: добавлять сверху новые сообщения
                 Messages = SourceMessages.OrderByDescending(x => x.CreatingDateTime).ToList();
                 OnPropertyChanged(nameof(Messages));
             });
