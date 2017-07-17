@@ -33,16 +33,27 @@ namespace Realmius_mancheck_Web
             return user;
         }
 
+        //allows to check and process the addition and editing of user's objects
         public override bool CheckAndProcess(CheckAndProcessArgs<User> args)
         {
-            var db = args.Database as RealmiusServerContext;
-
+            //var db = args.Database as RealmiusServerContext;
+            
             if (args.Entity is NoteRealm)
             {
-                var newNote = args.Entity as NoteRealm;
-                newNote.UserRole = args.User.Role;
-                return true;
+                //if the first upload of the object
+                if (args.OriginalDbEntity == null)
+                {
+                    var newNote = args.Entity as NoteRealm;
+                    newNote.UserRole = args.User.Role;
+                    return true;
+                }
+                //otherwise check user's rights to edit the object
+                if (args.User.Role >= (args.OriginalDbEntity as NoteRealm).UserRole)
+                {
+                    return true;
+                }
             }
+            
             if (args.Entity is PhotoRealm)
             {
                 return true;
@@ -51,12 +62,12 @@ namespace Realmius_mancheck_Web
             {
                 return true;
             }
+
             return false;
         }
 
         public override IList<string> GetTagsForObject(ChangeTrackingDbContext db, IRealmiusObjectServer obj)
         {
-
             if (obj is NoteRealm)
             {
                 var currentNote = obj as NoteRealm;
