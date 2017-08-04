@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Realmius;
+using Realmius.Contracts.Logger;
 using Xamarin.Forms.PlatformConfiguration;
 
 namespace Realmius_mancheck

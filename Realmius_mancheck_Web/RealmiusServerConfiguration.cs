@@ -5,11 +5,11 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Security.Provider;
 using Realmius.Server;
 using Realmius.Server.Configurations;
-using Realmius.Server.Infrastructure;
 using Realmius.Server.Models;
 using Realmius_mancheck_Web.DAL;
-using Realmius_mancheck_Web.Interfaces;
 using Realmius_mancheck_Web.Models;
+using Realmius.Server.Infrastructure;
+using Realmius.Contracts.Logger;
 
 namespace Realmius_mancheck_Web
 {
@@ -24,7 +24,7 @@ namespace Realmius_mancheck_Web
         public override IList<Type> TypesToSync => Startup.TypesForSync;
 
         public override ILogger Logger { get; set; } = new Logger();
-
+        
         public override User AuthenticateUser(IRequest request)
         {
             var userName = request.QueryString["userLogin"];

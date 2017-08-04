@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using DLToolkit.Forms.Controls;
 using Realmius;
+using Realmius.Contracts.Logger;
 using Realmius.SyncService;
 using Realmius_mancheck.Model;
 using Realmius_mancheck.RealmEntities;
@@ -101,10 +102,7 @@ namespace Realmius_mancheck
 
             syncService.Logger = _logger;
 
-            if (!GetRealm().All<NoteRealm>().Any() &&  !GetRealm().All<PhotoRealm>().Any() && !GetRealm().All<ChatMessageRealm>().Any())
-            {
-                InitRealmData();
-            }
+            InitRealmData();
             
         }
 

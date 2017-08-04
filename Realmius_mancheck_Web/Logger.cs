@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Realmius.Contracts.Logger;
 using Realmius.Server.Infrastructure;
 
 namespace Realmius_mancheck_Web
