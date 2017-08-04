@@ -27,8 +27,8 @@ namespace Realmius_mancheck.ViewModel
 
         public User CurrentUser
         {
-            get { return App.CurrenUser; }
-            set { App.CurrenUser = value; }
+            get { return App.CurrentUser; }
+            set { App.CurrentUser = value; }
         }
 
         public string ErrorMsg { get; set; }

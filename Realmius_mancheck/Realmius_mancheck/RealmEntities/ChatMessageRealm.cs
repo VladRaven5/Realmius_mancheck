@@ -25,7 +25,7 @@ namespace Realmius_mancheck.RealmEntities
         {
             Id = Guid.NewGuid().ToString();
             Text = text;
-            AuthorName = App.CurrenUser.Name;
+            AuthorName = App.CurrentUser.Name;
             CreatingDateTime = DateTimeOffset.Now;
         }
 
