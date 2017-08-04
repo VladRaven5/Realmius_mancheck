@@ -91,6 +91,7 @@ namespace Realmius_mancheck
             var instance = Realm.GetInstance(RealmConfiguration);
             return instance;
         }
+
         private void SetRealmConnection()
         {
             syncService = SyncServiceFactory.CreateUsingSignalR(
@@ -102,7 +103,7 @@ namespace Realmius_mancheck
 
             syncService.Logger = _logger;
             
-            InitRealmData();
+            //InitStartData();
         }
 
         public void ReinitializeDatabases()
@@ -145,7 +146,7 @@ namespace Realmius_mancheck
             RealmiusSyncService.RealmiusDbPath = realmPath + "_sync";
         }
 
-        private void InitRealmData()
+        private void InitStartData()
         {
             var realm = App.GetRealm();
             realm.Write(() =>
