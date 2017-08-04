@@ -128,11 +128,11 @@
     <Reference Include="Realm.Sync, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Realm.1.4.0\lib\portable-net45+sl5+wp8+wpa81+win8+monoandroid+Xamarin.iOS10+monotouch+Xamarin.Mac\Realm.Sync.dll</HintPath>
     </Reference>
-    <Reference Include="Realmius, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Realmius.1.0.9\lib\portable45-net45+win8+wpa81\Realmius.dll</HintPath>
+    <Reference Include="Realmius, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Realmius.1.0.12\lib\portable45-net45+win8+wpa81\Realmius.dll</HintPath>
     </Reference>
-    <Reference Include="Realmius.Contracts, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Realmius.Contracts.1.0.9\lib\portable45-net45+win8+wpa81\Realmius.Contracts.dll</HintPath>
+    <Reference Include="Realmius.Contracts, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Realmius.Contracts.1.0.12\lib\portable45-net45+win8+wpa81\Realmius.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>

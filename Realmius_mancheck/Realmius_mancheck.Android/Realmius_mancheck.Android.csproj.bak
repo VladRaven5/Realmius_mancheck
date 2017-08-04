@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <JavaMaximumHeapSize />
@@ -96,11 +96,11 @@
     <Reference Include="Realm.Sync, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Realm.1.4.0\lib\netstandard1.4\Realm.Sync.dll</HintPath>
     </Reference>
-    <Reference Include="Realmius, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Realmius.1.0.12\lib\portable45-net45+win8+wpa81\Realmius.dll</HintPath>
+    <Reference Include="Realmius, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Realmius.1.0.9\lib\portable45-net45+win8+wpa81\Realmius.dll</HintPath>
     </Reference>
-    <Reference Include="Realmius.Contracts, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Realmius.Contracts.1.0.12\lib\portable45-net45+win8+wpa81\Realmius.Contracts.dll</HintPath>
+    <Reference Include="Realmius.Contracts, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Realmius.Contracts.1.0.9\lib\portable45-net45+win8+wpa81\Realmius.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Remotion.Linq.2.1.1\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
